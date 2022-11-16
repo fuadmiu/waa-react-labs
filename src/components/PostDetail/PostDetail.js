@@ -8,6 +8,10 @@ const PostDetail = (props) => {
             <h4>{title}</h4>
             <h5>{author}</h5>
             <p>Some text about the post</p>
+            <div className='detail-action'>
+                <a href='/'>Edit</a>
+                <a href='/'>Delete</a>
+            </div>
         </div>
     );
 };

@@ -4,3 +4,6 @@
     margin: auto;
     padding: 10px;
 }
+.detail-action a {
+    margin-right: 10px;
+}
