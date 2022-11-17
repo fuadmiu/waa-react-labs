@@ -23,7 +23,7 @@ const Dashboard = () => {
         if (!posts.length) {
             return;
         }
-        const post = posts[0]
+        const post = posts[0];
         post.title = document.getElementById('title').value;
         const copyPosts = [...posts];
         setPosts(copyPosts);
