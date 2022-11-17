@@ -20,7 +20,10 @@ const Dashboard = () => {
     const [selectedState, setSelectedState] = useState(0);
 
     const titleBtnHandler = () => {
-        const post = posts.find(p => p.id === 111);
+        if (!posts.length) {
+            return;
+        }
+        const post = posts[0]
         post.title = document.getElementById('title').value;
         const copyPosts = [...posts];
         setPosts(copyPosts);
