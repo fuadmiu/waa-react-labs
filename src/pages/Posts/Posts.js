@@ -7,11 +7,11 @@ const Posts = (props) => {
         return <Post 
                 key={p.id} 
                 data={p} 
-                setSelected= { ()=> { props.setSelected(p.id) }}/>
+                setSelected= { ()=> { props.setSelected(p.id) }} />
     });
     return (
         <div className='posts'>
-            {posts}
+            {posts.length === 0 ? 'No posts': posts}
         </div>
     );
 };
