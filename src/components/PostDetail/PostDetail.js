@@ -1,9 +1,12 @@
 import axios from 'axios';
 import React, { useEffect, useState } from 'react';
+import Comment from '../Comment/Comment';
 import './PostDetail.css';
 
 const PostDetail = ({id, deletePost}) => {
     const [detail, setDetail] = useState({});
+    const [comments, setComments] = useState([]);
+
     useEffect(() => {
         if (id === 0) {
             return;
@@ -16,6 +19,20 @@ const PostDetail = ({id, deletePost}) => {
                 console.log(error.message)
             });
     }, [id]);
+
+    useEffect(() => {
+        if (id === 0) {
+            return;
+        }
+        axios.get(`http://localhost:8080/api/v1/posts/${id}/comments`)
+            .then(response => {
+                setComments(response.data);
+            })
+            .catch(error => {
+                console.log(error.message)
+            });
+    }, [id]);
+
     const editBtnHandler = (e) => {
         e.preventDefault();
         console.log('Edit clicked for id : ' + id);
@@ -37,6 +54,12 @@ const PostDetail = ({id, deletePost}) => {
             <h4>{detail.title}</h4>
             <h5>{detail.author}</h5>
             <p>{detail.content}</p>
+            <div>
+                <h5>Comments</h5>
+                {comments.length !== 0 ? comments.map(c => {
+                    return <Comment name={c.name} />
+                }): ""}
+            </div>
             <div className='detail-action'>
                 <a href='/' onClick={editBtnHandler}>Edit</a>
                 <a href='/' onClick={deleteBtnHandler}>Delete</a>
