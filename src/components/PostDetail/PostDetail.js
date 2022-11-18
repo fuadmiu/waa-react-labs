@@ -57,7 +57,7 @@ const PostDetail = ({id, deletePost}) => {
             <div>
                 <h5>Comments</h5>
                 {comments.length !== 0 ? comments.map(c => {
-                    return <Comment name={c.name} />
+                    return <Comment key={c.id} name={c.name} />
                 }): ""}
             </div>
             <div className='detail-action'>
