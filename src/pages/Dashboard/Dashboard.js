@@ -1,6 +1,7 @@
 import axios from 'axios';
 import React, { useEffect, useState } from 'react';
 import AddPost from '../../components/AddPost/AddPost';
+import AddPostRef from '../../components/AddPost/AddPostRef';
 import PostDetail from '../../components/PostDetail/PostDetail';
 import { SelectedIdContext } from '../../context/SelectedIdContext';
 import Posts from '../Posts/Posts';
@@ -87,7 +88,11 @@ const Dashboard = () => {
                 </div>
 
                 <PostDetail deletePost = {deletePostHandler} />
+
+                {/* Lab 09 task using useRef() */}
+                <AddPostRef />
                 
+                {/* Lab 07 version of AddPost */}
                 <AddPost 
                     post={newPost}
                     onChange={(event) => { onChange(event) }}

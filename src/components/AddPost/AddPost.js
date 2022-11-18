@@ -5,7 +5,7 @@ const AddPost = (props) => {
     const { title, author, content } = props.post;
     return (
         <div className='add-post'>
-            <h1>Add a new post</h1>
+            <h1>Add a new post (Lab 07)</h1>
             <label>Title</label>
             <input type="text"
                 label={'title'}
