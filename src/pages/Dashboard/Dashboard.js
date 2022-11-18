@@ -2,6 +2,7 @@ import axios from 'axios';
 import React, { useEffect, useState } from 'react';
 import AddPost from '../../components/AddPost/AddPost';
 import PostDetail from '../../components/PostDetail/PostDetail';
+import { SelectedIdContext } from '../../context/SelectedIdContext';
 import Posts from '../Posts/Posts';
 import './Dashboard.css';
 
@@ -74,26 +75,26 @@ const Dashboard = () => {
     }, []);
 
     return (
-        <div className='dashboard'>
-            <Posts 
-                posts = {posts} 
-                setSelected = {setSelected} />
+        <SelectedIdContext.Provider value={selectedState}>
+            <div className='dashboard'>
+                <Posts 
+                    posts = {posts} 
+                    setSelected = {setSelected} />
 
-            <div className='title-change'>
-                <input id='title' /> <br />
-                <button id='title-btn' onClick={titleBtnHandler}>change name</button>
+                <div className='title-change'>
+                    <input id='title' /> <br />
+                    <button id='title-btn' onClick={titleBtnHandler}>change name</button>
+                </div>
+
+                <PostDetail deletePost = {deletePostHandler} />
+                
+                <AddPost 
+                    post={newPost}
+                    onChange={(event) => { onChange(event) }}
+                    addPost={addPostHandler} />
+
             </div>
-
-            <PostDetail 
-                id={selectedState} 
-                deletePost = {deletePostHandler} />
-            
-            <AddPost 
-                post={newPost}
-                onChange={(event) => { onChange(event) }}
-                addPost={addPostHandler} />
-
-        </div>
+        </SelectedIdContext.Provider>
     );
 };
 

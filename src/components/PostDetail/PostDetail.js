@@ -1,9 +1,11 @@
 import axios from 'axios';
-import React, { useEffect, useState } from 'react';
+import React, { useContext, useEffect, useState } from 'react';
+import { SelectedIdContext } from '../../context/SelectedIdContext';
 import Comment from '../Comment/Comment';
 import './PostDetail.css';
 
-const PostDetail = ({id, deletePost}) => {
+const PostDetail = ({deletePost}) => {
+    const id = useContext(SelectedIdContext);
     const [detail, setDetail] = useState({});
     const [comments, setComments] = useState([]);
 
